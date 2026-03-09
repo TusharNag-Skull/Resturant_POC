@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --glass-bg: rgba(13, 13, 13, 0.7);
+    --glass-blur: blur(24px);
+    --glass-border: 1px solid rgba(212, 175, 55, 0.2);
+    --gold-glow: 0 0 20px rgba(212, 175, 55, 0.3), 0 0 60px rgba(212, 175, 55, 0.1);
+    --card-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+    --transition-luxury: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-deep-black text-text-primary font-body;
+    /* Custom Scrollbar */
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #050505;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #D4AF37;
+      border-radius: 10px;
+    }
+  }
+
+  /* Selection Color */
+  ::selection {
+    background-color: #D4AF37;
+    color: #050505;
+  }
+}
+
+@layer utilities {
+  .glassmorphism {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+  }
+
+  .text-shadow-gold {
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  }
+  
+  .filter-gold {
+      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+  }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  width: 12px;
+  height: 12px;
+  background-color: #D4AF37;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s var(--transition-luxury), height 0.3s var(--transition-luxury), background-color 0.3s var(--transition-luxury);
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.hover {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.8);
+  mix-blend-mode: normal;
+}
